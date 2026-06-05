@@ -1,0 +1,40 @@
+notes = []
+while True:
+    print("\n1. Показать заметки\n2. Добавить\n3. Удалить\n4. Выход")
+    choice = input("Выбор: ")
+
+    if choice == "1":
+        if not notes:
+            print("Список заметок пуст")
+        else:
+            for i, note in enumerate(notes, 1):
+                print(f"{i}. {note}")
+
+    elif choice == "2":
+        new_note = input("Текст заметки: ")
+        notes.append(new_note)
+        print("Заметка добавлена")
+
+    elif choice == "3":
+        if not notes:
+            print("Нет заметок для удаления")
+        else:
+            # показываем заметки с номерами
+            for i, note in enumerate(notes, 1):
+                print(f"{i}. {note}")
+            try:
+                num = int(input("Номер заметки для удаления: "))
+                if 1 <= num <= len(notes):
+                    del notes[num - 1]
+                    print("Заметка удалена")
+                else:
+                    print("Неверный номер")
+            except ValueError:
+                print("Нужно ввести число")
+
+    elif choice == "4":
+        print("До свидания!")
+        break
+
+    else:
+        print("Неверный выбор, введите 1, 2, 3 или 4")
